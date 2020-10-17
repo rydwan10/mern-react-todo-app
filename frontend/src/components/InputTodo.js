@@ -13,6 +13,7 @@ const InputText = styled.input`
     padding: 5px 8px;
     width: 502px;
     font-size: 24px;
+    border: 0;
 `;
 
 const Button = styled.button`

@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import check from '../icons/check.svg';
+import back from '../icons/back.svg';
+import trash from '../icons/trash.svg';
+
 // Styled Components
 const TodoItem = styled.input`
     padding: 5px 8px;
     width: 400px;
-    font-size: 24px;
-    outline: none;
+    font-size: 22px;
+    border: 0;
 `;
 
 const DeleteButton = styled.button`
@@ -16,6 +20,7 @@ const DeleteButton = styled.button`
     color: #ffff;
     cursor: pointer;
     box-shadow: 3px 4px rgba(0, 0, 0, 0.2);
+    margin-left: 5px;
 `;
 
 const CompleteButton = styled.button`
@@ -57,9 +62,10 @@ const Todo = ({ todo, todos, setTodos }) => {
 
     return (
         <Container>
+            
+    <CompleteButton className={todo.completed ? "completed-button" : ''} onClick={handleComplete}>{ todo.completed ? <img src={back} alt="back-icon"/> : <img src={check} alt="check-icon"/> }</CompleteButton>
             <TodoItem className={todo.completed ? "completed" : ''} readOnly={true} value={todo.title}/>
-            <CompleteButton className={todo.completed ? "completed-button" : ''} onClick={handleComplete}>{todo.completed ? '-' : 'Check'}</CompleteButton>
-            <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+    <DeleteButton onClick={handleDelete}><img src={trash} alt="trash-icon" /></DeleteButton>
         </Container>
     )
 }
